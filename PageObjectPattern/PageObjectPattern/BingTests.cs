@@ -11,29 +11,25 @@ namespace PageObjectPattern
     [TestClass]
     public class BingTests
     {
-        public IWebDriver Driver { get; set; }
-        public WebDriverWait Wait { get; set; }
-
         [TestInitialize]
         public void SetupTest()
         {
-            this.Driver = new ChromeDriver();
-            this.Wait = new WebDriverWait(this.Driver, TimeSpan.FromSeconds(30));
+            Driver.StartBrowser();            
         }
 
         [TestCleanup]
         public void TeardownTest()
         {
-            this.Driver.Quit();
+            Driver.StopBrowser();
         }
 
         [TestMethod]
         public void SearchTextInBing_First()
         {
-            BingMainPage bingMainPage = new BingMainPage(this.Driver);
+            BingMainPage bingMainPage = new BingMainPage();
             bingMainPage.Navigate();
             bingMainPage.Search("Automate The Planet");
-            bingMainPage.Validates().AutomateThePlanetExist();
+            bingMainPage.Validate().AutomateThePlanetExist();
         }
     }
 }

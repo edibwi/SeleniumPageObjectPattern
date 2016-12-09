@@ -8,23 +8,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace PageObjectPattern.PageObjects
 {
-    public class BingMainPageValidator
+    public class BingMainPageValidator : BasePageValidator<BingMainPageElementMap>
     {
-        private readonly IWebDriver browser;
-
-        public BingMainPageValidator(IWebDriver browser)
-        {
-            this.browser = browser;
-        }
-
-        protected BingMainPageElementMap Map
-        {
-            get
-            {
-                return new BingMainPageElementMap(this.browser);
-            }
-        }
-
         public void AutomateThePlanetExist()
         {
             Assert.IsTrue(this.Map.ResultLink.Displayed, "Automate The Planet hyperlink is not displayed");
