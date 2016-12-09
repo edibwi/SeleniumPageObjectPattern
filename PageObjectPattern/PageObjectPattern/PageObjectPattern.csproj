@@ -60,10 +60,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BrowserTypes.cs" />
+    <Compile Include="Driver.cs" />
+    <Compile Include="PageObjects\BasePage.cs" />
+    <Compile Include="PageObjects\BasePageElementMap.cs" />
     <Compile Include="PageObjects\BingMainPage.cs" />
     <Compile Include="BingTests.cs" />
     <Compile Include="PageObjects\BingMainPageElementMap.cs" />
     <Compile Include="PageObjects\BingMainPageValidator.cs" />
+    <Compile Include="PageObjects\BasePageValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

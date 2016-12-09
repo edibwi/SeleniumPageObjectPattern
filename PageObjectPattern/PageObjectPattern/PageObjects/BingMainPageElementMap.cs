@@ -7,15 +7,8 @@ using OpenQA.Selenium;
 
 namespace PageObjectPattern.PageObjects
 {
-    public class BingMainPageElementMap
+    public class BingMainPageElementMap : BasePageElementMap
     {
-        private readonly IWebDriver browser;
-
-        public BingMainPageElementMap(IWebDriver browser)
-        {
-            this.browser = browser;
-        }
-
         public IWebElement SearchBox
         {
             get

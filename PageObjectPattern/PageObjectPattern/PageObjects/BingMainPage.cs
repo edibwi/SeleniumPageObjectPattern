@@ -10,34 +10,13 @@ using OpenQA.Selenium.Support.PageObjects;
 
 namespace PageObjectPattern.PageObjects
 {
-    public class BingMainPage
+    public class BingMainPage : BasePage<BingMainPageElementMap, BingMainPageValidator>
     {
-        private readonly IWebDriver browser;
-        private readonly string url = @"http://www.bing.com/";
-
-        public BingMainPage(IWebDriver browser)
+        public BingMainPage()
+            : base(@"http://www.bing.com/")
         {
-            this.browser = browser;
         }
         
-        protected BingMainPageElementMap Map
-        {
-            get
-            {
-                return new BingMainPageElementMap(this.browser);
-            }
-        }
-
-        public BingMainPageValidator Validates()
-        {
-            return new BingMainPageValidator(this.browser);
-        }
-
-        public void Navigate()
-        {
-            this.browser.Navigate().GoToUrl(this.url);
-        }
-
         public void Search(string keyword)
         {
             this.Map.SearchBox.Clear();
