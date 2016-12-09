@@ -12,40 +12,37 @@ namespace PageObjectPattern.PageObjects
 {
     public class BingMainPage
     {
-        private readonly IWebDriver driver;
+        private readonly IWebDriver browser;
         private readonly string url = @"http://www.bing.com/";
 
         public BingMainPage(IWebDriver browser)
         {
-            this.driver = browser;
-            PageFactory.InitElements(browser, this);
+            this.browser = browser;
+        }
+        
+        protected BingMainPageElementMap Map
+        {
+            get
+            {
+                return new BingMainPageElementMap(this.browser);
+            }
         }
 
-        [FindsBy(How = How.Id, Using = "sb_form_q")]
-        public IWebElement SearchBox { get; set; }
-
-        [FindsBy(How = How.Id, Using = "sb_form_go")]
-        public IWebElement GoButton { get; set; }
-
-        [FindsBy(How = How.Id, Using = "b_tween")]
-        public IWebElement ResultsCountDiv { get; set; }
+        public BingMainPageValidator Validates()
+        {
+            return new BingMainPageValidator(this.browser);
+        }
 
         public void Navigate()
         {
-            this.driver.Navigate().GoToUrl(this.url);
+            this.browser.Navigate().GoToUrl(this.url);
         }
 
-        public void Search(string textToType)
+        public void Search(string keyword)
         {
-            this.SearchBox.Clear();
-            this.SearchBox.SendKeys(textToType);
-            this.GoButton.Click();
-        }
-
-        public void ValidateResultsCount(string expectedCount)
-        {
-            Assert.IsTrue(this.ResultsCountDiv.Text.Contains(expectedCount),
-        "The results DIV doesn't contains the specified text.");
+            this.Map.SearchBox.Clear();
+            this.Map.SearchBox.SendKeys(keyword);
+            this.Map.GoButton.Click();
         }
     }
 }

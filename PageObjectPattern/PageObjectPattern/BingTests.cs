@@ -33,7 +33,7 @@ namespace PageObjectPattern
             BingMainPage bingMainPage = new BingMainPage(this.Driver);
             bingMainPage.Navigate();
             bingMainPage.Search("Automate The Planet");
-            bingMainPage.ValidateResultsCount("2.760.000 RESULTS");
+            bingMainPage.Validates().AutomateThePlanetExist();
         }
     }
 }

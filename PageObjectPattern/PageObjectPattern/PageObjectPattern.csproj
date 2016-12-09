@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="PageObjects\BingMainPage.cs" />
     <Compile Include="BingTests.cs" />
+    <Compile Include="PageObjects\BingMainPageElementMap.cs" />
+    <Compile Include="PageObjects\BingMainPageValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
